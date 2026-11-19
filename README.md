@@ -26,3 +26,23 @@
 - 老板端 / 商户后台：https://nanliang9178-ui.github.io/boss/ （仓库 `boss`）
 - 老板端「桌位管理」展示、下载的桌码指向本仓库的 `/Consume/<scene>`；两个仓库都部署在同一个 GitHub Pages 站点下，所以图片可直接引用。
 - 顾客端下单 → 老板端实时接单/出餐 → 顾客端订单状态同步更新，一条完整链路可演示。
+
+## 真实源码（`source/`）
+
+根目录这套 `index.html` + `assets/` 是**静态演示站**，GitHub Pages 直接托管它。
+安装包里的**原始工程源码**放在 `source/`，与演示站互不影响：
+
+| 路径 | 内容 |
+| --- | --- |
+| `source/apps/h5` | 网页点单页（React 19 + Vite + Tailwind） |
+| `source/apps/miniprogram` | 微信原生小程序（可选，需已认证小程序） |
+
+```bash
+cd source
+npm install
+npm run dev      # http://localhost:5174（/api 自动代理到 localhost:3000）
+```
+
+- 真实数据需要后端：见 `boss` 仓库的 `source/apps/api`。
+- 为让构建产物能挂在 `/Consume/` 子路径下，`source` 里的 `vite.config.ts` 只在 `build` 时加前缀，本地开发仍是根路径。
+- 页面路由沿用原工程：`/t/:scene` 点单页，`/t/:scene/checkout` 结算，`/t/:scene/orders` 我的订单。

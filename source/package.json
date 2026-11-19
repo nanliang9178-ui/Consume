@@ -1,0 +1,16 @@
+{
+  "name": "tianshu-consume",
+  "version": "1.0.0",
+  "private": true,
+  "description": "天枢点单 · 顾客端（网页点单 + 微信小程序）",
+  "workspaces": [
+    "apps/h5"
+  ],
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "scripts": {
+    "dev": "npm run dev -w @tianshu/h5",
+    "build": "npm run build -w @tianshu/h5"
+  }
+}
