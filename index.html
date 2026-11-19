@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#FF5A1F" />
+    <link rel="icon" type="image/svg+xml" href="/Consume/favicon.svg" />
+    <title>扫码点单 · 天枢点单</title>
+    <script>
+      /* 顾客入口：打开 /Consume/ 直接进入 A01 桌（scene=demo）的点餐页。
+         真实门店里，每个桌位的网址就是写进桌码里的内容；微信小程序码需注册认证小程序后再生成。 */
+      (function () {
+        var p = location.pathname;
+        if (p === '/' || p === '/Consume' || p === '/Consume/' || p === '/index.html' || p === '/Consume/index.html') {
+          location.replace('/Consume/demo');
+        }
+      })();
+    </script>
+    <!-- 演示数据层：静态部署没有后端，用浏览器内 Mock 模拟 /api 接口 -->
+    <!-- 跨设备实时同步：MQTT 共享数据 + 广播（手机下单，商户后台立即收到） -->
+    <script src="/Consume/assets/mqtt.min.js"></script>
+    <script src="/Consume/assets/live-sync.js"></script>
+    <script src="/Consume/assets/mock-core.js"></script>
+    <script src="/Consume/assets/mock-h5.js"></script>
+    <script type="module" crossorigin src="/Consume/assets/h5-app.js"></script>
+    <link rel="stylesheet" crossorigin href="/Consume/assets/h5-app.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
